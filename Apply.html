@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample HTML Body</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #000000;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #00000072;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: calc(100% - 22px);
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+        <p>Apply For Helper Simple fill the two and wait https://lootdest.org/s?bIt5i8Ni where site redirect or explain put answer in the second one</p>
+
+        <input type="text" id="username" placeholder="Enter your username...">
+        <input type="text" id="siteAnswer" placeholder="What does this site redirect to? ">
+        <button onclick="sendMessage()">Send Message to Discord</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const username = document.getElementById('username').value.trim();
+            const siteAnswer = document.getElementById('siteAnswer').value.trim();
+
+            if (!username || !siteAnswer) {
+                alert("Please fill out both fields.");
+                return;
+            }
+
+            const webhookURL = 'https://discord.com/api/webhooks/1374628756110704712/tlCk3g4No5q8A-eMLBaVT8OQpBSTFeHgUUCcqVHIdR3nJItam95C3iw14Xb9G1XGokQP'; // Replace with your actual webhook URL
+            const payload = {
+                content: `Name: ${username}\n1. What does this site redirect to? ${siteAnswer}`
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Message sent!");
+                } else {
+                    alert("Failed to send message.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Error sending message.");
+            });
+        }
+    </script>
+</body>
+</html>
